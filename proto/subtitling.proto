@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ch.swisstxt.citizenjournalist.sftpprocessor.grpc";
+option java_outer_classname = "SubtitlingProto";
+option objc_class_prefix = "STP";
+
+package sftpprocessor;
+
+enum SubtitleFormat {
+  VTT = 0;
+  SRT = 1;
+}
+
+enum Language {
+  NONE = 0;
+  EN = 1;
+  DE = 2;
+  FR = 3;
+  IT = 4;
+  ES = 5;
+}
+
+// The greeting service definition.
+service Subtitling {
+  // Starts a transcription
+  rpc Transcribe (TranscriptionRequest) returns (stream TranscriptionReply) {}
+}
+
+message RequestHeaders {
+  map<string, string> headers = 5;
+}
+// The request message containing the user's name.
+message TranscriptionRequest {
+  optional string externalReference = 1;
+  string sourceUrl = 2;
+  repeated SubtitleFormat format = 3;
+  repeated Language outputLanguages = 4;
+  optional RequestHeaders headers = 5;
+}
+
+// The response message containing the greetings
+message TranscriptionReply {
+  optional string externalReference = 1;
+  string transcriptionUrl = 2;
+  optional SubtitleFormat format = 3;
+  Language language = 4;
+  bool original = 5;
+  string cid = 6;
+}
