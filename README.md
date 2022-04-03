@@ -69,4 +69,6 @@ The service will return a stream of generated subtitle links with the detected l
 | original          | true or false. If this is the detected language from the source video the field will be true. If it is one of the  translated subtitles it will be false                        | false                                                                                   |
 | cid               | ipfs multihash. this  is the unique hashed content identifier for the subtitle file                                                                                             | "QmV98UL67tsSyNHjL3F3CaBHSktKkjAL5yinwePaFNYXQo"                                                                                      |
 
-TBD samples
+### Links
+
+[Java Client Library](https://github.com/The-Crocop/mediaverse-speech-lib)
